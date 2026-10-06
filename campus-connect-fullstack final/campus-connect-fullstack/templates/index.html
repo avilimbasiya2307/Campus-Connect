@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Connect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav><div class="wrap">
+  <a href="#home" class="logo"><span>🎓</span>Campus Connect</a>
+  <ul class="menu" id="menu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#updates" data-cat="Lost and Found">Lost and Found</a></li>
+    <li><a href="#updates" data-cat="Study Rooms">Study Rooms</a></li>
+    <li><a href="#updates" data-cat="Free Food">Free Food</a></li>
+    <li><a href="#updates" data-cat="Notices">Notices</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#market">Marketplace</a></li>
+  </ul>
+  <button class="ghost" id="theme" aria-label="Toggle theme">🌓</button>
+  <div id="auth"></div>
+  <button class="ghost burger" id="burger" aria-label="Menu">☰</button>
+</div></nav>
+
+<header class="hero" id="home"><div class="wrap">
+  <h1>Your Campus, <em>All in One Place</em></h1>
+  <p>Real-time updates on lost items, open study rooms, free food and dorm notices, shared by students, for students.</p>
+  <a href="#features" class="btn">Explore Updates</a>
+  <div class="stats"><div><b id="sPosts">0</b>live posts</div><div><b id="sUsers">0</b>students</div><div><b id="sRes">0</b>resolved</div></div>
+</div></header>
+
+<section id="login"><div class="wrap"><div class="box lg">
+  <div class="grow"><h2>Join Campus Connect</h2><p class="sub" id="lgTxt"></p></div>
+  <div class="lgb" id="lgBtns"></div>
+</div></div></section>
+
+<section id="announcements"><div class="wrap">
+  <h2>📌 Official announcements <span class="live" title="Live"></span></h2><p class="sub">Verified updates from campus administration, always on top.</p>
+  <div class="ann" id="ann"></div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <h2>What's happening</h2><p class="sub">Tap a section to see its latest posts.</p>
+  <div class="grid">
+    <button class="card" data-cat="Lost and Found"><div class="ico">🔍</div><h3>Lost and Found</h3><p>Post lost items or find what you're missing.</p></button>
+    <button class="card" data-cat="Study Rooms"><div class="ico">📚</div><h3>Study Rooms</h3><p>See which rooms are free right now.</p></button>
+    <button class="card" data-cat="Free Food"><div class="ico">🍕</div><h3>Free Food</h3><p>Find events serving free food.</p></button>
+    <button class="card" data-cat="Notices"><div class="ico">📢</div><h3>Notices</h3><p>Important dorm and campus updates.</p></button>
+    <button class="card" data-go="events"><div class="ico">🎉</div><h3>Campus Events</h3><p>Upcoming events by date, time and place.</p></button>
+    <button class="card" data-go="market"><div class="ico">🛍️</div><h3>Marketplace</h3><p>Buy and sell items with fellow students.</p></button>
+    <button class="card" data-go="announcements"><div class="ico">📣</div><h3>Announcements</h3><p>Official updates from the admin team.</p></button>
+    <button class="card" data-go="activity"><div class="ico">⚡</div><h3>Activity</h3><p>Latest posts from every category.</p></button>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <div class="sh"><div><h2>🎉 Campus Events <span class="live" title="Live"></span></h2><p class="sub">Upcoming events, soonest first.</p></div>
+    <div class="shb"><button class="ghost" data-open="E">＋ Post event</button><button class="ghost" data-view="Events">View all</button></div></div>
+  <div class="feed" id="evGrid"></div>
+</div></section>
+
+<section id="market"><div class="wrap">
+  <div class="sh"><div><h2>🛍️ Marketplace <span class="live" title="Live"></span></h2><p class="sub">Buy and sell with fellow students.</p></div>
+    <div class="shb"><button class="ghost" data-open="M">＋ Sell item</button><button class="ghost" data-view="Marketplace">View all</button></div></div>
+  <div class="feed" id="mkGrid"></div>
+</div></section>
+
+<section id="post"><div class="wrap">
+  <h2>Share an update</h2><p class="sub">Pick a type, fill the form, and it goes live instantly. <a href="#" id="loginLink" style="color:var(--brand);font-weight:600">Log in or sign up</a> to post.</p>
+  <div class="tabs ptabs" id="ptabs"></div><div class="two" id="forms"></div>
+</div></section>
+
+<section id="updates"><div class="wrap">
+  <h2>Live updates <span class="live" title="Auto-refreshing"></span></h2><p class="sub">Newest first. Resolved posts are dimmed.</p>
+  <div class="bar"><div class="tabs" id="tabs"></div><input class="search" id="q" type="search" placeholder="Search posts…" aria-label="Search posts"><label class="chk"><input type="checkbox" id="hd"> Hide resolved</label></div>
+  <div class="feed" id="feed"></div>
+  <button class="ghost more" id="more" hidden>Load more</button>
+</div></section>
+
+<section id="activity"><div class="wrap">
+  <h2>⚡ Recent activity</h2><p class="sub">Newest updates from all categories.</p>
+  <div class="box"><ul class="act" id="act"></ul></div>
+</div></section>
+
+<section id="prof" hidden><div class="wrap">
+  <h2>My profile</h2><p class="sub">Everything you have posted.</p>
+  <div class="box pf"><div class="av big" id="pav"></div><div class="grow"><h3 id="pname"></h3><p class="hint" id="pmail"></p></div>
+    <div class="pst"><div><b id="pc">0</b>posts</div><div><b id="ph2">0</b>helpful</div><div><b id="pr">0</b>resolved</div></div></div>
+  <div class="feed" id="myposts" style="margin-top:18px"></div>
+</div></section>
+
+<footer><div class="wrap"><strong>Campus Connect</strong><br>Making campus life easier</div></footer>
+
+<div class="modal" id="modal"><div class="box" role="dialog" aria-modal="true" aria-label="Account">
+  <div class="tabs" style="margin-bottom:14px"><button class="tab on" data-m="login">Log in</button><button class="tab" data-m="signup">Sign up</button></div>
+  <form id="af">
+    <label id="nameL" hidden>Name<input id="an" maxlength="40" autocomplete="name"></label>
+    <label>Campus email<input id="ae" type="email" required autocomplete="email" placeholder="you@campus.edu"></label>
+    <label>Password<input id="ap" type="password" required minlength="6" autocomplete="current-password"></label>
+    <p class="err" id="err"></p>
+    <button class="btn" type="submit" id="asub">Log in</button>
+    <p class="hint">Student: demo@campus.edu / demo1234<br>Admin: admin@campus.edu / admin1234</p>
+  </form>
+</div></div>
+<button class="btn fab" id="fab">＋ New post</button>
+<div class="modal" id="lb"><img id="lbi" alt="Enlarged photo" style="max-width:100%;max-height:85vh;border-radius:16px"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
