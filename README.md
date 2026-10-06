@@ -109,7 +109,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open **http://127.0.0.1:5000** in your browser.
+Open **campus-connect-campus-connect-fulls.vercel.app** in your browser.
 
 On first launch the database is created automatically and seeded with demo users and sample posts, so the site is never empty.
 
