@@ -1,3 +1,19 @@
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Database (created automatically when the app first runs)
+*.db
+*.sqlite3
+
+# Secrets
 .env
+
+# OS / editor files
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
