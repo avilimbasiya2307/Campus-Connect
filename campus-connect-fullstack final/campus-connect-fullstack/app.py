@@ -8,7 +8,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-change-me")  # set a real one in production
 app.config["MAX_CONTENT_LENGTH"] = 1_000_000  # reject huge uploads
-DB = os.path.join(os.path.dirname(os.path.abspath(__file__)), "campus.db")
+import os
+DB = "/tmp/campus.db" if os.environ.get("VERCEL") else os.path.join(os.path.dirname(os.path.abspath(__file__)), "campus.db")
 CATS = ["Lost and Found", "Study Rooms", "Free Food", "Notices", "Events", "Marketplace", "Announcements"]
 
 DIETS = ("Veg", "Non-veg", "Veg & non-veg")
